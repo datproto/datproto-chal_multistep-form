@@ -9,6 +9,7 @@
     }
   ],
   "rules": {
-    "no-html-link-for-pages": "off"
+    "no-html-link-for-pages": "off",
+    "semi": [ "error", "never" ]
   }
 }
