@@ -1,91 +1,44 @@
-import Image from 'next/image';
-import { Inter } from 'next/font/google';
-import styles from './page.module.css';
-
-const inter = Inter({ subsets: ['latin'] });
-
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
+    <main className="flex flex-col gap-[2rem] px-4 py-[2rem]">
+      <div>
+        <ul className="flex gap-4">
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+        </ul>
+      </div>
+
+      <form className="rounded-md bg-white py-[2rem] px-6">
+        <h1>Personal info</h1>
+
+        {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
+        <p className="body_large mt-3 mb-5">
+          Please provide your name, email address, and phone number.
         </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+
+        {/* Input */}
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-1">
+            <label htmlFor="name" className="text-sm text-form-denim">Name</label>
+            <input type="text" name="name" placeholder="e.g. stephen king"
+                   className="rounded border border-form-gray-light px-4 py-3 font-form font-medium capitalize text-form-gray-normal"/>
+          </div>
+
+          <div className="flex flex-col gap-1">
+            <label htmlFor="name" className="text-sm text-form-denim">Email Address</label>
+            <input type="text" name="email" placeholder="e.g. stephenking@lorem.com"
+                   className="rounded border border-form-gray-light px-4 py-3 font-form font-medium text-form-gray-normal"/>
+          </div>
+
+          <div className="flex flex-col gap-1">
+            <label htmlFor="name" className="text-sm text-form-denim">Phone Number</label>
+            <input type="text" name="phone" placeholder="e.g. +1 234 567 890"
+                   className="rounded border border-form-gray-light px-4 py-3 font-form font-medium text-form-gray-normal"/>
+          </div>
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      </form>
     </main>
-  );
+  )
 }

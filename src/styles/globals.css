@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url(./fonts/Ubuntu-Regular.ttf);
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url(./fonts/Ubuntu-Bold.ttf);
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url(./fonts/Ubuntu-Medium.ttf);
+  font-weight: 500;
+  font-style: normal;
+}
+
+* {
+  @apply font-form text-base
+}
+
+body {
+  @apply bg-form-blue-alice
+}
+
+h1 {
+  @apply font-bold text-2xl lg:text-[2rem] text-form-denim
+}
+
+h2 {
+  @apply font-medium text-base
+}
+
+.body {
+  &_large {
+    @apply text-base text-form-gray-normal
+  }
+
+  &_medium {
+    @apply text-sm
+  }
+
+  &_small {
+    @apply text-xs
+  }
+}

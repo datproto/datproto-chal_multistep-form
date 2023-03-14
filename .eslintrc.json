@@ -1,15 +1,38 @@
 {
-  "extends": ["next/core-web-vitals", "airbnb-base", "plugin:tailwindcss/recommended"],
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb-base",
+    "plugin:tailwindcss/recommended"
+  ],
   "overrides": [
     {
       "files": [
-        "*.ts", "*.tsx", "*.js"
+        "*.ts",
+        "*.tsx",
+        "*.js"
       ],
       "parser": "@typescript-eslint/parser"
     }
   ],
   "rules": {
     "no-html-link-for-pages": "off",
-    "semi": [ "error", "never" ]
+    "semi": [
+      "error",
+      "never"
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "global-require": 0,
+    "quotes": [
+      2,
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ]
   }
 }
