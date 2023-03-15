@@ -27,6 +27,11 @@
   @apply font-form text-base
 }
 
+html,
+body {
+  @apply h-full
+}
+
 body {
   @apply bg-form-blue-alice
 }
