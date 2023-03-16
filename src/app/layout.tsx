@@ -3,6 +3,7 @@ import React from 'react'
 import Image from 'next/image'
 
 import mobileBg from '@/assets/images/bg-sidebar-mobile.svg'
+import Providers from '@/providers'
 
 export const metadata = {
   title: 'Frontend Mentor | Multi-step form',
@@ -16,11 +17,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-    <body className="relative">
+    <body className="relative lg:flex lg:items-center lg:justify-center">
     <div className="absolute top-0 -z-50 w-full lg:hidden">
       <Image src={mobileBg} alt="background" height={175} width={372} className="w-full object-cover object-center"/>
     </div>
-    {children}
+    <Providers>
+      {children}
+    </Providers>
     </body>
     </html>
   )

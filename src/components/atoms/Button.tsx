@@ -5,16 +5,29 @@ interface IButton {
   type?: 'button' | 'submit' | 'reset' | undefined
   background?: boolean
   customClass?: string
+  formId?: string
 }
 
 function Button({
-  text = 'button', type = 'button', background = true, customClass = ' ',
+  text = 'button', type = 'button', background = true, formId, customClass = ' ',
 }: IButton) {
+  // @ts-ignore
+  const buttonClassStyle = `rounded ${background ? 'bg-form-denim text-white' : 'bg-transparent text-form-gray-normal'} py-3 px-4 text-sm font-bold capitalize lg:rounded-lg lg:px-6 lg:py-4 lg:text-base ${customClass && customClass}`
+
+  if (formId && type === 'submit') {
+    return (
+      <button type={type}
+              form={formId}
+              className={buttonClassStyle}>
+        {text}
+      </button>
+    )
+  }
   return (
-    <button type={type}
-            className={`rounded ${background ? 'bg-form-denim text-white' : 'bg-transparent text-form-gray-normal'} py-3 px-4 text-sm font-bold capitalize lg:rounded-lg lg:px-6 lg:py-4 lg:text-base ${customClass && customClass}`}>
-      {text}
-    </button>
+      <button type={type}
+              className={buttonClassStyle}>
+        {text}
+      </button>
   )
 }
 
