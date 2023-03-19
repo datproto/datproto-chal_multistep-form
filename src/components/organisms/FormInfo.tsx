@@ -4,15 +4,16 @@ import React from 'react'
 import Form from '@/components/molecules/Form'
 import Input from '@/components/atoms/Input'
 import { AnimatePresence } from 'framer-motion'
+import { useNavigate } from 'react-router'
 
 function FormInfo() {
+  const navigate = useNavigate()
+
   const [showForm, setShowForm] = React.useState(true)
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log('Name: ', (e.currentTarget.elements.namedItem('username') as HTMLInputElement).value)
-    console.log('Email: ', (e.currentTarget.elements.namedItem('email') as HTMLInputElement).value)
-    console.log('Phone: ', (e.currentTarget.elements.namedItem('phone') as HTMLInputElement).value)
     setShowForm(false)
+    navigate('/plans')
   }
 
   const formInputs = [

@@ -4,6 +4,9 @@
     "airbnb-base",
     "plugin:tailwindcss/recommended"
   ],
+  "plugins": [
+    "simple-import-sort"
+  ],
   "overrides": [
     {
       "files": [
@@ -43,6 +46,9 @@
         "js": "never",
         "jsx": "never"
       }
-    ]
+    ],
+    "tailwindcss/no-custom-classname": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
   }
 }
