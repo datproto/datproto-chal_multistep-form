@@ -1,19 +1,29 @@
 'use client'
 
-import React from 'react'
-import Form from '@/components/molecules/Form'
-import Input from '@/components/atoms/Input'
 import { AnimatePresence } from 'framer-motion'
+import React from 'react'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router'
+
+import Input from '@/components/atoms/Input'
+import Form from '@/components/molecules/Form'
+import { addFormUser } from '@/reducers/formReducer'
 
 function FormInfo() {
   const navigate = useNavigate()
 
   const [showForm, setShowForm] = React.useState(true)
-  const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+
+  const dispatch = useDispatch()
+  const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setShowForm(false)
-    navigate('/plans')
+    const name = e.currentTarget.username.value
+    const email = e.currentTarget.email.value
+    const phone = e.currentTarget.phone.value
+    dispatch(addFormUser({ name, email, phone }))
+    setShowForm(false)
+    await navigate('/plans')
   }
 
   const formInputs = [
@@ -44,7 +54,7 @@ function FormInfo() {
   ]
 
   return (
-    <Form id="select-plan" title="Personal info"
+    <Form id="info" title="Personal info"
           description="Please provide your name, email address, and phone number."
           onSubmitHandler={onSubmitHandler}
     >

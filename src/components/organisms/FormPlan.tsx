@@ -1,9 +1,10 @@
 'use client'
 
 import { AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 import React from 'react'
 
-import Input from '@/components/atoms/Input'
+import ArcadeIcon from '@/assets/images/icon-arcade.svg'
 import Form from '@/components/molecules/Form'
 
 function FormPlan() {
@@ -48,12 +49,13 @@ function FormPlan() {
       <AnimatePresence>
         {showForm && (
           formInputs.map((input, index) => (
-            <Input
-              key={index}
-              customAnimation={index}
-              label={input.label}
-              content={input.content}
-            />
+            <div key={index} className="flex gap-3 rounded-md border border-form-gray-light p-4">
+              <Image src={ArcadeIcon} alt="Arcade Icon" width={40} height={40}/>
+              <div className="flex flex-col justify-between">
+                <h2 className="font-form text-base font-medium capitalize text-form-denim">arcade</h2>
+                <p className="font-form text-[14px] text-form-gray-normal">$9/mo</p>
+              </div>
+            </div>
           ))
         )}
       </AnimatePresence>

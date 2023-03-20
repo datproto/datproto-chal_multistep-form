@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
 import { NavType } from '@/types/navType'
 
 const initialState = {

@@ -1,5 +1,5 @@
-import React from 'react'
 import { motion, Variants } from 'framer-motion'
+import React from 'react'
 
 interface IInput {
   label?: string
@@ -52,5 +52,8 @@ function Input({
     </motion.div>
   )
 }
+
+// UPDATE: Use the below link for reference
+// https://flowbite.com/docs/forms/radio/#advanced-layout
 
 export default Input

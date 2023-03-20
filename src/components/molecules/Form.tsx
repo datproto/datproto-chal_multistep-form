@@ -1,6 +1,5 @@
-import React from 'react'
-
 import { AnimatePresence, motion } from 'framer-motion'
+import React from 'react'
 
 interface IForm {
   id?: string
@@ -44,6 +43,7 @@ const formChildVariants = {
     y: 20,
     transition: {
       when: 'afterChildren',
+      duration: 2,
     },
   },
 }
