@@ -1,6 +1,7 @@
 import '@/styles/globals.css'
-import React from 'react'
+
 import Image from 'next/image'
+import React from 'react'
 
 import mobileBg from '@/assets/images/bg-sidebar-mobile.svg'
 import Providers from '@/providers'

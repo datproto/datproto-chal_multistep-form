@@ -4,7 +4,10 @@ import { AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import React from 'react'
 
+import AdvancedIcon from '@/assets/images/icon-advanced.svg'
 import ArcadeIcon from '@/assets/images/icon-arcade.svg'
+import ProIcon from '@/assets/images/icon-pro.svg'
+import { RadioInput } from '@/components/atoms/Input'
 import Form from '@/components/molecules/Form'
 
 function FormPlan() {
@@ -16,27 +19,36 @@ function FormPlan() {
 
   const formInputs = [
     {
-      label: 'name',
+      icon: ArcadeIcon,
       content: {
-        type: 'text',
-        name: 'username',
-        placeholder: 'e.g. Stephen King',
+        type: 'arcade',
+        price: {
+          month: 9,
+          year: 90,
+        },
+        currency: 'USD',
       },
     },
     {
-      label: 'email address',
+      icon: AdvancedIcon,
       content: {
-        type: 'email',
-        name: 'email',
-        placeholder: 'e.g. stephenking@lorem.com',
+        type: 'advanced',
+        price: {
+          month: 12,
+          year: 120,
+        },
+        currency: 'USD',
       },
     },
     {
-      label: 'phone number',
+      icon: ProIcon,
       content: {
-        type: 'phone',
-        name: 'phone',
-        placeholder: 'e.g. +1 234 567 890',
+        type: 'pro',
+        price: {
+          month: 15,
+          year: 150,
+        },
+        currency: 'USD',
       },
     },
   ]
@@ -49,12 +61,17 @@ function FormPlan() {
       <AnimatePresence>
         {showForm && (
           formInputs.map((input, index) => (
-            <div key={index} className="flex gap-3 rounded-md border border-form-gray-light p-4">
-              <Image src={ArcadeIcon} alt="Arcade Icon" width={40} height={40}/>
-              <div className="flex flex-col justify-between">
-                <h2 className="font-form text-base font-medium capitalize text-form-denim">arcade</h2>
-                <p className="font-form text-[14px] text-form-gray-normal">$9/mo</p>
-              </div>
+            <div key={index} className="relative">
+              <RadioInput
+                content={{ name: 'plan-choose', value: `radio-${index}` }}
+                radio={{ order: index }}
+              >
+                <Image src={input.icon} alt={'radio-icon'} height={40} width={40}/>
+                <div className="flex flex-col justify-between">
+                  <h2 className="font-form text-base font-medium capitalize text-form-denim">{input.content.type}</h2>
+                  <p className="font-form text-[14px] text-form-gray-normal">${input.content.price.month}/mo</p>
+                </div>
+              </RadioInput>
             </div>
           ))
         )}
