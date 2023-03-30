@@ -8,6 +8,8 @@ const store = configureStore({
     form: formSliceReducer,
     nav: navSliceReducer,
   },
+
+  devTools: process.env.NODE_ENV !== 'production',
 })
 
 export type RootState = ReturnType<typeof store.getState>

@@ -12,7 +12,11 @@ interface IInput {
   radio?: {
     order?: number
   }
+  checked?: boolean
   customAnimation?: number
+  onClick?: React.MouseEventHandler<HTMLInputElement>
+  // eslint-disable-next-line no-unused-vars
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   children?: React.ReactNode
 }
 
@@ -58,7 +62,9 @@ function Input({
   )
 }
 
-function RadioInput({ content, radio, children }: IInput) {
+function RadioInput({
+  content, radio, onChange, onClick, children,
+}: IInput) {
   return (
     <motion.div
       key={content.name}
@@ -68,10 +74,40 @@ function RadioInput({ content, radio, children }: IInput) {
              type="radio"
              value={content && content.value}
              name={content && content.name}
-             id={`radio-${content.name}-${radio?.order}`}/>
+             id={`radio-${content.name}-${radio?.order}`}
+             onChange={onChange}
+             onClick={onClick}
+      />
       <label
         className="flex cursor-pointer gap-3 rounded-md border border-form-gray-light p-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:bg-form-gray-lightest peer-checked:ring-2 peer-checked:ring-form-purple"
         htmlFor={`radio-${content.name}-${radio?.order}`}>
+        {children}
+      </label>
+
+      <div className="absolute top-5 right-3 hidden h-5 w-5 peer-checked:block"/>
+    </motion.div>
+  )
+}
+
+function SelectInput({
+  content, checked, onChange, children,
+}: IInput) {
+  return (
+    <motion.div
+      key={content.name}
+      variants={inputVariants}
+      className="relative">
+      <label
+        className="checkbox-label"
+        htmlFor={`checkbox-${content.name}`}>
+        <input className="accent-form-purple focus:outline-none focus:ring-0 focus:ring-offset-0"
+               type="checkbox"
+               value={content && content.value}
+               name={content && content.name}
+               id={`checkbox-${content.name}`}
+               onChange={onChange}
+               checked={checked}
+        />
         {children}
       </label>
 
@@ -84,4 +120,4 @@ function RadioInput({ content, radio, children }: IInput) {
 // https://flowbite.com/docs/forms/radio/#advanced-layout
 
 export default Input
-export { RadioInput }
+export { RadioInput, SelectInput }

@@ -6,10 +6,11 @@ interface IButton {
   background?: boolean
   customClass?: string
   formId?: string
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
 function Button({
-  text = 'button', type = 'button', background = true, formId, customClass = ' ',
+  text = 'button', type = 'button', background = true, formId, customClass = ' ', onClick,
 }: IButton) {
   // @ts-ignore
   const buttonClassStyle = `rounded ${background ? 'bg-form-denim text-white' : 'bg-transparent text-form-gray-normal'} py-3 px-4 text-sm font-bold capitalize lg:rounded-lg lg:px-6 lg:py-4 lg:text-base ${customClass && customClass}`
@@ -18,16 +19,18 @@ function Button({
     return (
       <button type={type}
               form={formId}
-              className={buttonClassStyle}>
+              className={buttonClassStyle}
+              onClick={onClick}
+      >
         {text}
       </button>
     )
   }
   return (
-      <button type={type}
-              className={buttonClassStyle}>
-        {text}
-      </button>
+    <button type={type}
+            className={buttonClassStyle}>
+      {text}
+    </button>
   )
 }
 

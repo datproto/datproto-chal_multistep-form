@@ -57,3 +57,13 @@ h2 {
     @apply text-xs
   }
 }
+
+@layer components {
+  .checkbox-label {
+    @apply flex items-center cursor-pointer gap-3 rounded-md border border-form-gray-light p-4 hover:bg-gray-50 ring-1 ring-form-gray-light
+  }
+
+  .checkbox-label:has(input:checked) {
+    @apply bg-form-gray-lightest ring-2 ring-form-purple
+  }
+}

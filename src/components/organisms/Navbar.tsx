@@ -67,6 +67,7 @@ function Navbar() {
         className="flex items-center justify-center gap-4 lg:flex-col lg:items-start lg:gap-[2rem]">
         <NavItem step={1} title="your info" destination="/"/>
         <NavItem step={2} title="select your plans" destination="/plans"/>
+        <NavItem step={3} title="pick add-ons" destination="/addons"/>
       </motion.ul>
     </motion.div>
   )
