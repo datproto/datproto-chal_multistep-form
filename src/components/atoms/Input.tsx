@@ -56,14 +56,18 @@ function Input({
       }}
       className="flex flex-col gap-1">
       {label && <label htmlFor={content.name} className="text-sm capitalize text-form-denim">{label}</label>}
-      <input type={content.type} name={content.name} placeholder={content.placeholder}
-             className="rounded border border-form-gray-light px-4 py-3 font-form font-medium text-form-gray-normal"/>
+      <input
+        type={content.type}
+        name={content.name}
+        placeholder={content.placeholder}
+        defaultValue={content.value}
+        className="rounded border border-form-gray-light px-4 py-3 font-form font-medium text-form-gray-normal"/>
     </motion.div>
   )
 }
 
 function RadioInput({
-  content, radio, onChange, onClick, children,
+  content, radio, onChange, onClick, checked, children,
 }: IInput) {
   return (
     <motion.div
@@ -77,6 +81,8 @@ function RadioInput({
              id={`radio-${content.name}-${radio?.order}`}
              onChange={onChange}
              onClick={onClick}
+             checked={checked}
+             readOnly
       />
       <label
         className="flex cursor-pointer gap-3 rounded-md border border-form-gray-light p-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:bg-form-gray-lightest peer-checked:ring-2 peer-checked:ring-form-purple"

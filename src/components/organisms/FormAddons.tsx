@@ -9,12 +9,12 @@ import { chooseAddOns, removeAddOns } from '@/reducers/formReducer'
 
 function FormAddons() {
   const navigate = useNavigate()
-
-  const addons = useSelector((state: any) => state.form.plan.addOns)
   const dispatch = useDispatch()
 
-  const [showForm, setShowForm] = React.useState(true)
+  const addons = useSelector((state: any) => state.form.plan.addOns)
+  const type = useSelector((state: any) => state.form.plan.type)
 
+  const [showForm, setShowForm] = React.useState(true)
   // Handle Form and Input events
   const [checked, setChecked] = React.useState(
     [false, false, false],
@@ -35,9 +35,13 @@ function FormAddons() {
 
       // If the addon is not selected, add it to the list
       if (!isAddonSelected) {
+        const name = valueArray.value.split('-')[0]
+        const price = +valueArray.value.split('-')[1]
+
         dispatch(chooseAddOns({
           addOns: {
-            name: valueArray.value,
+            name,
+            price,
           },
         }))
       }
@@ -45,7 +49,7 @@ function FormAddons() {
       // If the addon is selected, remove it from the list
       dispatch(removeAddOns({
         addOns: {
-          name: e.currentTarget.value,
+          name: e.currentTarget.value.split('-')[0],
         },
       }))
     }
@@ -84,14 +88,25 @@ function FormAddons() {
       <AnimatePresence>
         {showForm && (
           formInputs.map((input, index) => {
+            const checkedStatus = addons.find((addon: any) => addon.name === input.content.name)
             // Transform Addon name to include "-" in name
             const addonName = input.content.name.replace(/\s+/g, '-').toLowerCase()
             return (
               <SelectInput onChange={(e) => handleSelect(e, index)} key={index}
-                           content={{ name: `check-${addonName}`, value: input.content.name }}
-                           checked={checked[index]}
+                           content={{ name: `check-${addonName}`, value: `${input.content.name}-${input.content.price}` }}
+                           checked={!!checkedStatus}
               >
-                <span className="capitalize">{input.content.name}</span>
+                <div className="flex w-full items-center justify-between">
+                  <div className="information">
+                    <p className="body_medium capitalize">{input.content.name}</p>
+                    <p className="body_small text-form-gray-normal">{input.content.description}</p>
+                  </div>
+                  <div className="price">
+                    <p className="body_small text-form-purple">
+                      +{input.content.price}/{type}
+                    </p>
+                  </div>
+                </div>
               </SelectInput>
             )
           })

@@ -13,7 +13,7 @@ const initialState = {
   user: userState,
   plan: {
     name: '',
-    type: '',
+    type: 'mo',
     price: 0,
     addOns: [],
   } as IPlan,

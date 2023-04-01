@@ -2,7 +2,7 @@
 
 import { AnimatePresence } from 'framer-motion'
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 
 import Input from '@/components/atoms/Input'
@@ -10,11 +10,13 @@ import Form from '@/components/molecules/Form'
 import { addFormUser } from '@/reducers/formReducer'
 
 function FormInfo() {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const infos = useSelector((state: any) => state.form.user)
 
   const [showForm, setShowForm] = React.useState(true)
 
-  const dispatch = useDispatch()
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setShowForm(false)
@@ -33,6 +35,7 @@ function FormInfo() {
         type: 'text',
         name: 'username',
         placeholder: 'e.g. Stephen King',
+        value: infos.name,
       },
     },
     {
@@ -41,6 +44,7 @@ function FormInfo() {
         type: 'email',
         name: 'email',
         placeholder: 'e.g. stephenking@lorem.com',
+        value: infos.email,
       },
     },
     {
@@ -49,6 +53,7 @@ function FormInfo() {
         type: 'phone',
         name: 'phone',
         placeholder: 'e.g. +1 234 567 890',
+        value: infos.phone,
       },
     },
   ]

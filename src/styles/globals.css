@@ -50,7 +50,7 @@ h2 {
   }
 
   &_medium {
-    @apply text-sm
+    @apply text-sm font-medium
   }
 
   &_small {
