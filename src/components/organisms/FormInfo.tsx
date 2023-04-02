@@ -1,6 +1,5 @@
 'use client'
 
-import { AnimatePresence } from 'framer-motion'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
@@ -63,18 +62,16 @@ function FormInfo() {
           description="Please provide your name, email address, and phone number."
           onSubmitHandler={onSubmitHandler}
     >
-      <AnimatePresence>
-        {showForm && (
-          formInputs.map((input, index) => (
-            <Input
-              key={index}
-              customAnimation={index}
-              label={input.label}
-              content={input.content}
-            />
-          ))
-        )}
-      </AnimatePresence>
+      {showForm && (
+        formInputs.map((input, index) => (
+          <Input
+            key={index}
+            customAnimation={index}
+            label={input.label}
+            content={input.content}
+          />
+        ))
+      )}
     </Form>
   )
 }

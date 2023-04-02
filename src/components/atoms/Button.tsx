@@ -28,7 +28,9 @@ function Button({
   }
   return (
     <button type={type}
-            className={buttonClassStyle}>
+            className={buttonClassStyle}
+            onClick={onClick}
+    >
       {text}
     </button>
   )

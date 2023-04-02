@@ -50,7 +50,7 @@ h2 {
   }
 
   &_medium {
-    @apply text-sm font-medium
+    @apply text-sm
   }
 
   &_small {
@@ -60,7 +60,7 @@ h2 {
 
 @layer components {
   .checkbox-label {
-    @apply flex items-center cursor-pointer gap-3 rounded-md border border-form-gray-light p-4 hover:bg-gray-50 ring-1 ring-form-gray-light
+    @apply flex items-center cursor-pointer gap-3 rounded-md border border-form-gray-light p-4 hover:bg-gray-50 hover:ring-form-purple ring-1 ring-form-gray-light
   }
 
   .checkbox-label:has(input:checked) {

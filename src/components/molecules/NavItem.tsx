@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion'
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+
+import { finishForm } from '@/reducers/formReducer'
 
 interface INavItem {
   step: number
@@ -30,6 +33,12 @@ const NavItemVariants = {
 }
 
 function NavItem({ step, title, destination }: INavItem) {
+  const dispatch = useDispatch()
+
+  const navigationHandler = () => {
+    dispatch(finishForm(false))
+  }
+
   return (
     <motion.li
       variants={NavItemVariants}
@@ -37,6 +46,7 @@ function NavItem({ step, title, destination }: INavItem) {
       <NavLink
         to={destination}
         className="flex lg:gap-4"
+        onClick={navigationHandler}
       >
         {({ isActive }) => (
           <>

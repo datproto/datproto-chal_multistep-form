@@ -73,7 +73,7 @@ function RadioInput({
     <motion.div
       key={content.name}
       variants={inputVariants}
-      className="relative">
+      className="relative flex-1">
       <input className="peer sr-only"
              type="radio"
              value={content && content.value}
@@ -85,7 +85,7 @@ function RadioInput({
              readOnly
       />
       <label
-        className="flex cursor-pointer gap-3 rounded-md border border-form-gray-light p-4 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:bg-form-gray-lightest peer-checked:ring-2 peer-checked:ring-form-purple"
+        className="flex cursor-pointer gap-3 rounded-md border border-form-gray-light p-4 hover:border-form-purple hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:bg-form-gray-lightest peer-checked:ring-2 peer-checked:ring-form-purple lg:flex-col lg:gap-10"
         htmlFor={`radio-${content.name}-${radio?.order}`}>
         {children}
       </label>

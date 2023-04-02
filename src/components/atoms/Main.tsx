@@ -30,7 +30,7 @@ function Main({ children }: IMain) {
       variants={mainVariants}
       initial="hidden"
       animate="show"
-      className="flex h-full w-full flex-col justify-between pt-[2rem] lg:h-auto lg:max-w-4xl lg:flex-row lg:rounded-2xl lg:bg-white lg:p-4 lg:shadow-2xl">
+      className="flex h-full w-full flex-col justify-between pt-[2rem] lg:max-h-[80%] lg:min-h-[66.6%] lg:max-w-4xl lg:flex-row lg:rounded-2xl lg:bg-white lg:p-4 lg:shadow-2xl xl:h-5/6 2xl:h-2/3">
 
       <Navbar/>
       {children}

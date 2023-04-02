@@ -54,7 +54,7 @@ function Navbar() {
       variants={NavVariants}
       initial="hidden"
       animate="show"
-      className="lg:rounded-2xl lg:px-[2rem] lg:py-10 lg:pr-20"
+      className="shrink-0 lg:rounded-2xl lg:px-[2rem] lg:py-10 lg:pr-20"
       style={{
         backgroundImage: `url(${largeScreen ? SidebarBG.src : ''})`,
         backgroundSize: 'cover',
@@ -68,6 +68,7 @@ function Navbar() {
         <NavItem step={1} title="your info" destination="/"/>
         <NavItem step={2} title="select your plans" destination="/plans"/>
         <NavItem step={3} title="pick add-ons" destination="/addons"/>
+        <NavItem step={4} title="Finishing up" destination="/finish"/>
       </motion.ul>
     </motion.div>
   )

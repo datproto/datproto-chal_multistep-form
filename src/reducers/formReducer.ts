@@ -17,6 +17,7 @@ const initialState = {
     price: 0,
     addOns: [],
   } as IPlan,
+  finish: false,
 }
 
 const formSlice = createSlice({
@@ -32,8 +33,14 @@ const formSlice = createSlice({
       plan: {
         ...state.plan,
         name: action.payload.plan.name,
-        type: action.payload.plan.type,
         price: action.payload.plan.price,
+      },
+    }),
+    choosePlanType: (state, action: PayloadAction<any>) => ({
+      ...state,
+      plan: {
+        ...state.plan,
+        type: action.payload.planType,
       },
     }),
     chooseAddOns: (state, action: PayloadAction<any>) => {
@@ -63,10 +70,14 @@ const formSlice = createSlice({
         }
       })
     },
+    finishForm: (state, action: PayloadAction<boolean>) => {
+      // eslint-disable-next-line no-param-reassign
+      state.finish = action.payload
+    },
   },
 })
 
 export const {
-  addFormUser, choosePlan, chooseAddOns, removeAddOns,
+  addFormUser, finishForm, choosePlan, chooseAddOns, removeAddOns, choosePlanType,
 } = formSlice.actions
 export default formSlice.reducer

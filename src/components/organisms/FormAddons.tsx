@@ -1,4 +1,3 @@
-import { AnimatePresence } from 'framer-motion'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
@@ -6,6 +5,39 @@ import { useNavigate } from 'react-router'
 import { SelectInput } from '@/components/atoms/Input'
 import Form from '@/components/molecules/Form'
 import { chooseAddOns, removeAddOns } from '@/reducers/formReducer'
+
+export const formInputs = [
+  {
+    content: {
+      name: 'online service',
+      description: 'Access to multiplayer games',
+      price: {
+        mo: 1,
+        yr: 10,
+      },
+    },
+  },
+  {
+    content: {
+      name: 'larger storage',
+      description: 'Access to multiplayer games',
+      price: {
+        mo: 2,
+        yr: 20,
+      },
+    },
+  },
+  {
+    content: {
+      name: 'customizable profile',
+      description: 'Access to multiplayer games',
+      price: {
+        mo: 2,
+        yr: 20,
+      },
+    },
+  },
+]
 
 function FormAddons() {
   const navigate = useNavigate()
@@ -22,7 +54,7 @@ function FormAddons() {
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setShowForm(false)
-    navigate('/')
+    navigate('/finish')
   }
   const handleSelect = (e: React.ChangeEvent<HTMLInputElement>, position: number) => {
     const updatedCheckedState = checked.map((item, index) => (index === position ? !item : item))
@@ -55,63 +87,39 @@ function FormAddons() {
     }
   }
 
-  // Form inputs
-  const formInputs = [
-    {
-      content: {
-        name: 'online service',
-        description: 'Access to multiplayer games',
-        price: 1,
-      },
-    },
-    {
-      content: {
-        name: 'larger storage',
-        description: 'Access to multiplayer games',
-        price: 2,
-      },
-    },
-    {
-      content: {
-        name: 'customizable profile',
-        description: 'Access to multiplayer games',
-        price: 2,
-      },
-    },
-  ]
-
   return (
     <Form id="addons" title="Pick add-ons"
           description="Add-ons help enhance your gaming experience."
           onSubmitHandler={onSubmitHandler}
     >
-      <AnimatePresence>
-        {showForm && (
-          formInputs.map((input, index) => {
-            const checkedStatus = addons.find((addon: any) => addon.name === input.content.name)
-            // Transform Addon name to include "-" in name
-            const addonName = input.content.name.replace(/\s+/g, '-').toLowerCase()
-            return (
-              <SelectInput onChange={(e) => handleSelect(e, index)} key={index}
-                           content={{ name: `check-${addonName}`, value: `${input.content.name}-${input.content.price}` }}
-                           checked={!!checkedStatus}
-              >
-                <div className="flex w-full items-center justify-between">
-                  <div className="information">
-                    <p className="body_medium capitalize">{input.content.name}</p>
-                    <p className="body_small text-form-gray-normal">{input.content.description}</p>
-                  </div>
-                  <div className="price">
-                    <p className="body_small text-form-purple">
-                      +{input.content.price}/{type}
-                    </p>
-                  </div>
+      {showForm && (
+        formInputs.map((input, index) => {
+          const checkedStatus = addons.find((addon: any) => addon.name === input.content.name)
+          // Transform Addon name to include "-" in name
+          const addonName = input.content.name.replace(/\s+/g, '-').toLowerCase()
+          return (
+            <SelectInput onChange={(e) => handleSelect(e, index)} key={index}
+                         content={{
+                           name: `check-${addonName}`,
+                           value: `${input.content.name}-${input.content.price[type === 'mo' ? 'mo' : 'yr']}`,
+                         }}
+                         checked={!!checkedStatus}
+            >
+              <div className="flex w-full items-center justify-between">
+                <div className="information">
+                  <p className="body_medium capitalize">{input.content.name}</p>
+                  <p className="body_small text-form-gray-normal">{input.content.description}</p>
                 </div>
-              </SelectInput>
-            )
-          })
-        )}
-      </AnimatePresence>
+                <div className="price">
+                  <p className="body_small text-form-purple">
+                    +${input.content.price[type === 'mo' ? 'mo' : 'yr']}/{type}
+                  </p>
+                </div>
+              </div>
+            </SelectInput>
+          )
+        })
+      )}
     </Form>
   )
 }
