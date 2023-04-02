@@ -16,8 +16,6 @@ Frontend Mentor challenges help you improve your coding skills by building reali
     - [Continued development](#continued-development)
 - [Author](#author)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
@@ -50,8 +48,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Github Repository](https://github.com/datproto/datproto-chal_todo-app.git)
-- Live Site URL: [Vercel Live Site](https://datproto-chal-multistep-form.vercel.app/)
+- Solution URL: [Github repo](https://github.com/datproto/datproto-chal_multistep-form)
+- Live Site URL: [Vercel app](https://datproto-chal-multistep-form.vercel.app/)
 
 ## My process
 
@@ -95,5 +93,5 @@ In the future, I would like to continue to improve my skills in the following ar
 ## Author
 
 - Website - [Dat Proto](https://www.datproto.com)
-- Frontend Mentor - [@datproto](https://www.frontendmentor.io/profile/datproto)
+- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/datproto)
 - Twitter - [@DatProtocol](https://twitter.com/DatProtocol)
